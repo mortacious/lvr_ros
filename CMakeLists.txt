@@ -58,7 +58,6 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${LVR2_INCLUDE_DIRS}
-  /usr/local/include/
   #${PCL_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
 )
