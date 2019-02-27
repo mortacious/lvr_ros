@@ -18,13 +18,15 @@ set(PACKAGE_DEPENDENCIES
   tf
 )
 
+SET(LVR2_DIR ~/draco_ws/src/lvr/build)
+
 find_package(catkin REQUIRED COMPONENTS ${PACKAGE_DEPENDENCIES})
-find_package(LVR 2 REQUIRED)
+find_package(LVR2 REQUIRED)
 find_package(OpenCV REQUIRED)
 
 #find_package(VTK REQUIRED)
 
-add_definitions(${LVR_DEFINITIONS} ${OpenCV_DEFINITIONS})
+add_definitions(${LVR2_DEFINITIONS} ${OpenCV_DEFINITIONS})
 
 add_action_files(
   DIRECTORY
@@ -52,11 +54,11 @@ if ("${CMAKE_VERSION}" VERSION_LESS "3.1")
 else ()
   set (CMAKE_CXX_STANDARD 14)
 endif ()
-
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-  ${LVR_INCLUDE_DIRS}
+  ${LVR2_INCLUDE_DIRS}
+  /usr/local/include/
   #${PCL_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
 )
@@ -76,7 +78,7 @@ generate_messages(
 catkin_package(
   CATKIN_DEPENDS ${PACKAGE_DEPENDENCIES}
   INCLUDE_DIRS include
-  DEPENDS LVR
+  DEPENDS LVR2
   LIBRARIES ${PROJECT_NAME}_conversions
 )
 
@@ -87,7 +89,7 @@ add_library(${PROJECT_NAME}_conversions
 
 target_link_libraries(${PROJECT_NAME}_conversions
   ${catkin_LIBRARIES}
-  ${LVR_LIBRARIES}
+  ${LVR2_LIBRARIES}
   ${OpenCV_LIBRARIES}
 )
 
@@ -99,7 +101,7 @@ add_executable(${PROJECT_NAME}_reconstruction
 
 target_link_libraries(${PROJECT_NAME}_reconstruction
   ${catkin_LIBRARIES}
-  ${LVR_LIBRARIES}
+  ${LVR2_LIBRARIES}
   #${PCL_LIBRARIES}
   #${VTK_LIBRARIES}
   ${OpenCV_LIBRARIES}
