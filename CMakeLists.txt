@@ -18,8 +18,6 @@ set(PACKAGE_DEPENDENCIES
   tf
 )
 
-SET(LVR2_DIR ~/draco_ws/src/lvr/build)
-
 find_package(catkin REQUIRED COMPONENTS ${PACKAGE_DEPENDENCIES})
 find_package(LVR2 REQUIRED)
 find_package(OpenCV REQUIRED)
